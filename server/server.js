@@ -91,7 +91,7 @@ app.put("/api/students/:studentId", async (req, res) => {
   }
 });
 
-// connects to the open weather api
+// api call to weather app 
 app.get("/weather", (req, res) => {
   const city = req.query.cityName;
   const apiKey = process.env.API_KEY;
