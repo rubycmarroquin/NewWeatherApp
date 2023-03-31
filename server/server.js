@@ -30,7 +30,7 @@ app.post("/api/students", async (req, res) => {
     const newStudent = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      iscurrent: req.body.iscurrent,
+      iscurrent: req.body.is_current,
       city: req.body.city
     };
     //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
