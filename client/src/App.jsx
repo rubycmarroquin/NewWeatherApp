@@ -5,7 +5,8 @@ import MyNavBar from "./components/Navbar";
 import WeatherCard from "./components/WeatherCard";
 import WeatherForm from "./components/WeatherForm";
 import DropDown from "./components/countrycodes";
-import ListStudents from './components/ListStudents'
+import ListStudents from "./components/ListStudents";
+import ScrollButton from "./components/ScrollButton";
 
 function App() {
   const [city, setCity] = useState("");
@@ -65,21 +66,27 @@ function App() {
 
   return (
     <div className="App">
-      <MyNavBar />
       <div className="AppOuter">
         <div className="AppInner">
-          <WeatherForm
-            city={city}
-            handleCityChange={handleCityChange}
-            handleSubmit={handleSubmit}
-          />
-          <DropDown country={country} setCountry={setCountry} />
-           {!result ? <p></p> : <WeatherCard data={result} /> }
-        </div>
-        <div className="DropDown" >
+          <div className="HomeSec">
+            <WeatherForm
+              city={city}
+              handleCityChange={handleCityChange}
+              handleSubmit={handleSubmit}
+            />
+            <div id="DropDown">
+              <DropDown country={country} setCountry={setCountry} />
+            </div>
+          </div>
+          <div className="HomeSec">
+            {!result ? <p></p> : <WeatherCard data={result} />}
+          </div>
         </div>
       </div>
-      <ListStudents />
+      <div id="Scroll">
+        <ListStudents />
+      </div>
+      <ScrollButton />
     </div>
   );
 }
