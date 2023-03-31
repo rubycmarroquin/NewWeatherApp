@@ -18,7 +18,7 @@ const WeatherForm = (props) => {
             type="text"
             placeholder="Please enter your city"
             name="city"
-            value={props.city}
+            value={props.city || ""}
             onChange={props.handleCityChange}
             required // instead of readonly, change to required
             className="searchBar"
