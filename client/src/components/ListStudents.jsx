@@ -52,7 +52,7 @@ const ListStudents = () => {
 
     //A function to handle the Update functionality
     const onUpdate = (toUpdateStudent) => {
-        console.log(toUpdateStudent);
+        // console.log(toUpdateStudent);
         setEditingStudent(toUpdateStudent);
         updateStudent(toUpdateStudent);
 
