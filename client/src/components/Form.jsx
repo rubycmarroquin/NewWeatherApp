@@ -8,6 +8,7 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
       firstname: "",
       lastname: "",
       is_current: false,
+      city: ""
     }
   );
 
@@ -29,12 +30,12 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
 
   const handleCheckChange = (event) => {
     const is_current = event.target.checked;
-    //console.log(iscurrent);
+    console.log(is_current);
     setStudent((student) => ({ ...student, is_current }));
   };
 
   const clearForm = () => {
-    setStudent({ firstname: "", lastname: "", is_current: false });
+    setStudent({ firstname: "", lastname: "", is_current: false, city: "" });
   };
 
   //A function to handle the post request
@@ -92,7 +93,7 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
           id="add-user-name"
           placeholder="First Name"
           required
-          value={student.firstname}
+          value={student.firstname || ""}
           onChange={handleNameChange}
         />
       </Form.Group>
@@ -103,7 +104,7 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
           id="add-user-lastname"
           placeholder="Last Name"
           required
-          value={student.lastname}
+          value={student.lastname || ""}
           onChange={handleLastnameChange}
         />
       </Form.Group>
@@ -114,23 +115,23 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
           id="add-user-city"
           placeholder="Favorite City"
           required
-          value={student.city}
+          value={student.city || ""}
           onChange={handleCityChange}
         />
       </Form.Group>
       <Form.Check
         type={"checkbox"}
         id={`isCurrent`}
-        checked={student.is_current}
+        checked={student.is_current || false}
         onChange={handleCheckChange}
         label={`Would you like to subscribe to our newsletter?`}
       />
       <Form.Group>
         <Button type="submit" variant="outline-success">
-          {student.id ? "Edit Student" : "Add Student"}
+          {student.id ? "Edit User" : "Add User"}
         </Button>
         {student.id ? (
-          <Button type="button" variant="outline-warning" onClick={clearForm}>
+          <Button type="button" variant="outline-warning" onClick={() => {clearForm()}}>
             Cancel
           </Button>
         ) : null}
