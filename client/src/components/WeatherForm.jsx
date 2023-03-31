@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/fontawesome-free-solid";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 const WeatherForm = (props) => {
   //what is inside props = {city, handleCityChange, handleSubmit}
   return (
