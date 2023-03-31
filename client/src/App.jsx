@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import MyNavBar from "./components/Navbar";
 import WeatherCard from "./components/WeatherCard";
 import WeatherForm from "./components/WeatherForm";
-import MyForm from "./components/Form.jsx";
 import DropDown from "./components/countrycodes";
 import ListStudents from './components/ListStudents'
 
