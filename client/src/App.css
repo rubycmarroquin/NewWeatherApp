@@ -71,3 +71,22 @@ button.btn.btn-primary {
   margin-left: 2em;
   margin-right: 2em;
 }
+
+.AppOuter {
+  display: flex;
+  flex-direction: row;
+}
+
+.DropDown {
+  margin-right: 50px;
+  width: 500px;
+  height: 400px;
+  padding: 20px;
+}
+
+.AppInner {
+    width: 500px;
+      height: 400px;
+      padding: 50px;
+}
+
