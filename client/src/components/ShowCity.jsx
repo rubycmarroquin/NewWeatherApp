@@ -30,7 +30,7 @@ function CityModal({student}) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-       Favorite Weather Details
+       Favorite City Weather Details
       </Button>
 
       <Modal show={show} onHide={handleClose}>

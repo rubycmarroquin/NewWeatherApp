@@ -1,7 +1,15 @@
+
 .App {
   min-height: 100vh;
-  background-color: rgb(238, 232, 232);
+
+  /* background-image: url("https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+  background-image: url('./assets/pinkclouds.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mybody {
@@ -22,13 +30,12 @@ a.navbar-brand {
 .list-students {
   text-align: center;
   margin-top: 25px;
-  flex: 1
+  flex: 1;
 }
 
 ul {
   list-style-type: none;
 }
-
 
 form {
   flex-direction: column;
@@ -38,13 +45,13 @@ form {
   flex: 1;
 }
 
-input[type=text] {
+input[type="text"] {
   display: inline-block;
   margin-top: -10px;
   width: 100%;
   font-size: 15px;
   border-radius: 2px;
-  border: 3px solid #98d0f1
+  border: 3px solid #98d0f1;
 }
 
 button.btn.btn-primary {
@@ -85,8 +92,54 @@ button.btn.btn-primary {
 }
 
 .AppInner {
-    width: 500px;
-      height: 400px;
-      padding: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* background-color: #FFD580; */
+  background-color: #fbe3f94a;
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
+.HomeSec {
+  padding: 10px;
+  width: 300px;
+  height: 500px;
+  /* background-color: blue; */
+  border-width: 1px;
+  margin: 5px
+}
+
+.formDiv {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.submitButton {
+  background-color: red;
+  padding: 2px;
+}
+
+.searchBar {
+  height: 35px;
+}
+
+#DropDown {
+  margin-left: 20px;
+}
+
+.weatherCard {
+background-color: #fee9f798;
+border-radius: 15px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 5px;
+  padding-left: 10px;
+  height: 475px;
+}
+
+#Scroll {
+  display: flex;
+  flex-direction: row;
+}

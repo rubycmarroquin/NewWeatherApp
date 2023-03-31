@@ -23,9 +23,6 @@ const WeatherForm = (props) => {
             required // instead of readonly, change to required
             className="searchBar"
           />
-          <button type="submit" className="submitButton">
-            <FontAwesomeIcon className="icon" icon={faSearch} />
-          </button>
         </div>
       </form>
     </div>
