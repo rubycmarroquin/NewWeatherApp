@@ -8,7 +8,7 @@ function DropDown({ country, setCountry }) {
       </Dropdown.Toggle>
       <Dropdown.Menu style={{ overflowY: "scroll", height: "200px" }}>
         {countryCodes.map((currCountryCode) => (
-          <Dropdown.Item eventKey={`${currCountryCode}`}>
+          <Dropdown.Item key= {`${currCountryCode}`} eventKey={`${currCountryCode}`}>
             {currCountryCode}
           </Dropdown.Item>
         ))}
