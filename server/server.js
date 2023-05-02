@@ -30,12 +30,13 @@ app.post("/api/students", async (req, res) => {
     const newStudent = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      iscurrent: req.body.iscurrent,
+      iscurrent: req.body.is_current,
+      city: req.body.city
     };
     //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
     const result = await db.query(
-      "INSERT INTO students(firstname, lastname, is_current) VALUES($1, $2, $3) RETURNING *",
-      [newStudent.firstname, newStudent.lastname, newStudent.iscurrent]
+      "INSERT INTO students(firstname, lastname, is_current, city) VALUES($1, $2, $3, $4) RETURNING *",
+      [newStudent.firstname, newStudent.lastname, newStudent.iscurrent, newStudent.city]
     );
     console.log(result.rows[0]);
     res.json(result.rows[0]);
@@ -67,6 +68,7 @@ app.put("/api/students/:studentId", async (req, res) => {
     id: req.body.id,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
+    city: req.body.city,
     iscurrent: req.body.is_current,
   };
   console.log("In the server from the url - the student id", studentId);
@@ -75,11 +77,12 @@ app.put("/api/students/:studentId", async (req, res) => {
     updatedStudent
   );
   // UPDATE students SET lastname = "something" WHERE id="16";
-  const query = `UPDATE students SET firstname=$1, lastname=$2, is_current=$3 WHERE id=${studentId} RETURNING *`;
+  const query = `UPDATE students SET firstname=$1, lastname=$2, is_current=$3, city=$4 WHERE id=${studentId} RETURNING *`;
   const values = [
     updatedStudent.firstname,
     updatedStudent.lastname,
     updatedStudent.iscurrent,
+    updatedStudent.city,
   ];
   try {
     const updated = await db.query(query, values);
@@ -91,12 +94,33 @@ app.put("/api/students/:studentId", async (req, res) => {
   }
 });
 
-// connects to the open weather api
+// api call to weather app 
 app.get("/weather", (req, res) => {
-  const city = req.query.cityName;
-  const apiKey = process.env.API_KEY;
   const params = new URLSearchParams({
     q: req.query.cityName,
+    appid: process.env.API_KEY,
+    units: "imperial",
+  });
+  const url = `https://api.openweathermap.org/data/2.5/weather?${params}`;
+  
+  console.log(url);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      res.send({ data });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+app.get("/weatherCountry", (req, res) => {
+  // console.log(req.query.searchCity);
+  // res.send(data)
+
+  const params = new URLSearchParams({
+    q: req.query.searchCity,
     appid: process.env.API_KEY,
     units: "imperial",
   });
@@ -117,3 +141,51 @@ app.get("/weather", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Hola, Server listening on ${PORT}`);
 });
+
+
+data = {
+    "data": {
+        "coord": {
+            "lon": -122.3321,
+            "lat": 47.6062
+        },
+        "weather": [
+            {
+                "id": 804,
+                "main": "Clouds",
+                "description": "overcast clouds",
+                "icon": "04d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 45.52,
+            "feels_like": 38.64,
+            "temp_min": 42.67,
+            "temp_max": 49.23,
+            "pressure": 1010,
+            "humidity": 76
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 15.99,
+            "deg": 193,
+            "gust": 18.99
+        },
+        "clouds": {
+            "all": 100
+        },
+        "dt": 1680195632,
+        "sys": {
+            "type": 2,
+            "id": 2041694,
+            "country": "US",
+            "sunrise": 1680184327,
+            "sunset": 1680230113
+        },
+        "timezone": -25200,
+        "id": 5809844,
+        "name": "Seattle",
+        "cod": 200
+    }
+}
